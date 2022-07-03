@@ -1,11 +1,11 @@
 sudo: required
-language: node_js
+language: generic
 services: 
   - docker
 before_install:
   - docker build -t react -f Dockerfile.dev .
 script:
-  - docker run react npm run test -- --coverage
+  - docker run -e CI=true react npm run test
 deploy:
   provider: elasticbeanstalk
   region: "us-east-1"
