@@ -7,11 +7,24 @@ pipeline {
       }
     }
 
-    stage('shell') {
+    stage('build') {
       steps {
-        sh '''ls -la
-npm run test'''
+        sh 'docker build -t react -f Dockerfile.dev .'
       }
+    }
+    stage('test') {
+      steps {
+        sh 'docker run -e react npm run test'
+      }
+    }
+    stage('push') {
+      sh 'docker login -u nguyenduynghi2001 -p Nghi@#2001'
+      sh 'docker tag react nguyenduynghi2001/dk-react'
+      sh 'docker push nguyenduynghi2001/dk-react'
+      sh 'docker image rm nguyenduynghi2001/dk-react'
+    }
+    stage('deploy') {
+      sh 'echo "Nghi"'
     }
 
   }
