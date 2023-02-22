@@ -18,13 +18,17 @@ pipeline {
       }
     }
     stage('push') {
-      sh 'docker login -u nguyenduynghi2001 -p Nghi@#2001'
-      sh 'docker tag react nguyenduynghi2001/dk-react'
-      sh 'docker push nguyenduynghi2001/dk-react'
-      sh 'docker image rm nguyenduynghi2001/dk-react'
+      steps {
+        sh 'docker login -u nguyenduynghi2001 -p Nghi@#2001'
+        sh 'docker tag react nguyenduynghi2001/dk-react'
+        sh 'docker push nguyenduynghi2001/dk-react'
+        sh 'docker image rm nguyenduynghi2001/dk-react'
+      }
     }
     stage('deploy') {
-      sh 'echo "Nghi"'
+      steps {
+        sh 'echo "Nghi"'
+      }
     }
 
   }
