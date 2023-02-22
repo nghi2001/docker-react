@@ -8,9 +8,9 @@ pipeline {
     }
   stage('ssh') {
     steps {
-      sshagent(credentials: ['74e1554c-0070-4c0e-a33e-8dfd974df2a2	']) {
+      sshagent(credentials: ['74e1554c-0070-4c0e-a33e-8dfd974df2a2']) {
         sh '''
-          ssh root@139.144.118.178
+          ssh -tt root@139.144.118.178
           echo $NGHI
         '''
       }
