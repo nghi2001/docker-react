@@ -10,8 +10,7 @@ pipeline {
     steps {
       sshagent(credentials: ['74e1554c-0070-4c0e-a33e-8dfd974df2a2']) {
         sh '''
-        sudo su -s /bin/bash jenkins
-          ssh -tt root@139.144.118.178
+          ssh -tt root@139.144.118.178 -v
           echo $NGHI
         '''
       }
