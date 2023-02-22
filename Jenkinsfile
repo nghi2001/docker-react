@@ -14,7 +14,7 @@ pipeline {
     }
     stage('test') {
       steps {
-        sh 'docker run -e react npm run test'
+        sh 'docker run -e CI=true react npm run test'
       }
     }
     stage('push') {
