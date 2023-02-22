@@ -1,17 +1,35 @@
 pipeline {
   agent any
-  tools {
-    // a bit ugly because there is no `@Symbol` annotation for the DockerTool
-    // see the discussion about this in PR 77 and PR 52: 
-    // https://github.com/jenkinsci/docker-commons-plugin/pull/77#discussion_r280910822
-    // https://github.com/jenkinsci/docker-commons-plugin/pull/52
-    'org.jenkinsci.plugins.docker.commons.tools.DockerTool' '18.09'
-  }
   stages {
-    stage('foo') {
+    stage('checkout_code') {
       steps {
-        sh "docker version" // DOCKER_CERT_PATH is automatically picked up by the Docker client
+        git(url: 'https://github.com/nghi2001/docker-react', branch: 'dev')
       }
     }
+
+    stage('build') {
+      steps {
+        sh 'docker build -t react -f Dockerfile.dev .'
+      }
+    }
+    stage('test') {
+      steps {
+        sh 'docker run -e react npm run test'
+      }
+    }
+    stage('push') {
+      steps {
+        sh 'docker login -u nguyenduynghi2001 -p Nghi@#2001'
+        sh 'docker tag react nguyenduynghi2001/dk-react'
+        sh 'docker push nguyenduynghi2001/dk-react'
+        sh 'docker image rm nguyenduynghi2001/dk-react'
+      }
+    }
+    stage('deploy') {
+      steps {
+        sh 'echo "Nghi"'
+      }
+    }
+
   }
 }
