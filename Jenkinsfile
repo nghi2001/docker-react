@@ -24,7 +24,6 @@ pipeline {
     }
     stage('build') {
       steps {
-        sh 'docker image rm react-test'
         sh 'docker build -t react -f Dockerfile .'
       }
     }
