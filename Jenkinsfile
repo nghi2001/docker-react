@@ -8,12 +8,10 @@ pipeline {
     }
   stage('ssh') {
     steps {
-      sshagent() {
         sh '''
           ssh -tt -o StrictHostKeyChecking=no root@139.144.118.178 -v
           echo $NGHI
         '''
-      }
     }
   }
     // stage('build') {
