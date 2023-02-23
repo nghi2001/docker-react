@@ -16,14 +16,16 @@ pipeline {
       }
     }
   }
+    stage('test') {
+      steps {
+        sh 'docker build -t react-test -f Dockerfile.dev .'
+        sh 'docker run -e CI=true react-test npm run test'
+        sh 'docker image rm react-test'
+      }
+    }
     stage('build') {
       steps {
         sh 'docker build -t react -f Dockerfile .'
-      }
-    }
-    stage('test') {
-      steps {
-        sh 'docker run -e CI=true react npm run test'
       }
     }
     stage('push') {
