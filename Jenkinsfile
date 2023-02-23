@@ -20,11 +20,11 @@ pipeline {
       steps {
         sh 'docker build -t react-test -f Dockerfile.dev .'
         sh 'docker run -e CI=true react-test npm run test'
-        sh 'docker image rm react-test'
       }
     }
     stage('build') {
       steps {
+        sh 'docker image rm react-test'
         sh 'docker build -t react -f Dockerfile .'
       }
     }
