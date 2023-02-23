@@ -38,7 +38,7 @@ pipeline {
       steps {
       sshagent(credentials: ['94ab4e86-77f1-480b-86bb-326fc8852a0c']) {
         sh '''
-          ssh root@139.144.118.178 -v -t -t "docker pull nguyenduynghi2001/dk-react && docker stop react && docker rm react && docker run --name --rm react -p 80:80 -d nguyenduynghi2001/dk-react  || docker run --name --rm react -p 80:80 -d nguyenduynghi2001/dk-react"
+          ssh root@139.144.118.178 -v -t -t "docker pull nguyenduynghi2001/dk-react && docker run --name --rm react -p 80:80 -d nguyenduynghi2001/dk-react"
         '''
         sh 'echo "Success"'
       }
