@@ -29,7 +29,7 @@ pipeline {
     }
     stage('push') {
       steps {
-        sh 'docker login -u nguyenduynghi2001 -p Nghi@#2001'
+        sh 'docker login -u $DOCKER_USER -p $DOCKER_PASSWORD'
         sh 'docker tag react nguyenduynghi2001/dk-react'
         sh 'docker push nguyenduynghi2001/dk-react'
         sh 'docker image rm nguyenduynghi2001/dk-react'

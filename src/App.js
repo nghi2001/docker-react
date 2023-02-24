@@ -17,6 +17,7 @@ function App() {
         >
           My first Pipeline 2 nguyen duy nghi learn react
         </a>
+        <h1>Nguyexn duy nghia</h1>
       </header>
     </div>
   );
