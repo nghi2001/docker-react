@@ -1,21 +1,21 @@
 pipeline {
   agent any
   stages {
-    stage('checkout_code') {
-      steps {
-        git(url: 'https://github.com/nghi2001/docker-react', branch: 'dev')
-      }
-    }
-  stage('ssh') {
-    steps {
-      sshagent(credentials: ['94ab4e86-77f1-480b-86bb-326fc8852a0c']) {
-        sh '''
-          ssh root@139.144.118.178 -v
-          echo "NHGI"
-        '''
-      }
-    }
-  }
+  //   stage('checkout_code') {
+  //     steps {
+  //       git(url: 'https://github.com/nghi2001/docker-react', branch: 'dev')
+  //     }
+  //   }
+  // stage('ssh') {
+  //   steps {
+  //     sshagent(credentials: ['94ab4e86-77f1-480b-86bb-326fc8852a0c']) {
+  //       sh '''
+  //         ssh root@139.144.118.178 -v
+  //         echo "NHGI"
+  //       '''
+  //     }
+  //   }
+  // }
     stage('test') {
       steps {
         sh 'docker build -t react-test -f Dockerfile.dev .'
