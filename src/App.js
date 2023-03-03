@@ -17,7 +17,7 @@ function App() {
         >
           My first Pipeline 2 nguyen duy nghi learn react
         </a>
-        <h1>Test Jenkins local</h1>
+        <h1>Test Jenkins local 2</h1>
         <h1>Nguyexn duy nghia Test Demo 2</h1>
       </header>
     </div>
