@@ -37,7 +37,7 @@ pipeline {
     }
     stage('deploy') {
       steps {
-      sshagent(credentials: ['94ab4e86-77f1-480b-86bb-326fc8852a0c']) {
+      sshagent(credentials: ['0df8b07a-2fdf-48e5-9a43-47876f0df049']) {
         sh '''
           ssh root@139.144.118.178 -v -t -t "docker pull nguyenduynghi2001/dk-react && docker run --name react --rm -p 80:80 -d nguyenduynghi2001/dk-react || docker stop react && docker run --name react --rm -p 80:80 -d nguyenduynghi2001/dk-react"
         '''
